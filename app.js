@@ -452,20 +452,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scrollToWaitlist() {
-        if (typeof Tally !== 'undefined') {
-            Tally.openPopup('lbPeGN', {
-                layout: 'modal',
-                width: 500,
-                hideTitle: true,
-                overlay: true
+        const contactSection = document.getElementById('contact');
+
+        if (contactSection) {
+            contactSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
             });
-        } else {
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-            }
         }
     }
+    window.scrollToWaitlist = scrollToWaitlist;
 
     // ==========================================
     // 5. HONEY PAIRING ENGINE
@@ -739,19 +735,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const formFeedback = document.getElementById('form-feedback');
 
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
+        newsletterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const emailInput = document.getElementById('newsletter-email');
             const phoneInput = document.getElementById('newsletter-phone');
-            if (emailInput && emailInput.value && phoneInput && phoneInput.value) {
+
+            const email = emailInput ? emailInput.value.trim() : '';
+            const phone = phoneInput ? phoneInput.value.trim() : '';
+
+            if (email && phone) {
+                // Show initial feedback
                 const msg = currentLang === 'es' 
                     ? '¡Gracias por unirte a la lista de espera de Hola Honey! Te avisaremos tan pronto como salga la cosecha.' 
                     : (currentLang === 'zh' 
                         ? '感谢您加入 Hola Honey 候补名单！蜂采蜂蜜一到，我们即刻通知您。' 
                         : 'Thank you for joining the Hola Honey Waitlist! We will notify you as soon as our harvest drops.');
+
                 formFeedback.textContent = msg;
-                emailInput.value = '';
-                phoneInput.value = '';
+                formFeedback.style.color = 'var(--forest-green)';
+
+                // Send to Vercel Serverless Backend (which routes securely to Tally / database)
+                try {
+                    await fetch('/api/waitlist', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, phone })
+                    });
+                } catch (err) {
+                    console.log('Backend submission fallback:', err);
+                }
+
+                if (emailInput) emailInput.value = '';
+                if (phoneInput) phoneInput.value = '';
             }
         });
     }

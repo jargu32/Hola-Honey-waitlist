@@ -65,7 +65,7 @@
                 </button>
 
                 <!-- Waitlist Header CTA -->
-                <button onclick="Tally.openPopup('lbPeGN', { layout: 'modal', width: 500, hideTitle: true, overlay: true })" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.8rem;" data-i18n="btn_add_to_cart">
+                <button onclick="scrollToWaitlist()" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.8rem;" data-i18n="btn_add_to_cart">
                     Join Waitlist
                 </button>
 
@@ -360,7 +360,7 @@
                         </div>
                     </div>
                     
-                    <button type="button" onclick="Tally.openPopup('lbPeGN', { layout: 'modal', width: 500, hideTitle: true, overlay: true })" class="btn btn-primary waitlist-submit-btn" data-i18n="btn_subscribe">
+                    <button type="submit" class="btn btn-primary waitlist-submit-btn" data-i18n="btn_subscribe">
                         JOIN WAITLIST <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </form>
@@ -496,10 +496,7 @@
         </div>
     </div>
 
-    <!-- Tally Form Embed Script -->
-    <script src="https://tally.so/widgets/embed.js"></script>
-    
     <!-- JavaScript -->
-    <script src="app.js?v=17"></script>
+    <script src="app.js?v=18"></script>
 </body>
 </html>
