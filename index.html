@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Honey | Raw Honey Rooted in Honduras</title>
+    <meta name="description" content="Premium, pure raw honey ethically sourced from the mountains of La Virtud, Honduras. Supporting local farming families and healthier tomorrows.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=16">
+</head>
+<body class="lang-en">
+
+    <!-- Main Navigation Header -->
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <!-- Top Left Logo -->
+            <a href="#" class="brand-logo">
+                <img src="assets/logo_transparent.png" alt="Hola Honey Logo" id="main-logo-img">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#shop" data-i18n="nav_shop">Shop</a></li>
+                    <li><a href="#story" data-i18n="nav_story">Our Story</a></li>
+                    <li><a href="#sourcing" data-i18n="nav_sourcing">Sourcing</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Right Header Actions (Language Switcher + Search + Cart) -->
+            <div class="header-actions">
+                <!-- Translation Feature (Language Switcher) -->
+                <div class="lang-switcher">
+                    <button id="lang-toggle-btn" class="lang-btn" aria-label="Switch Language">
+                        <i class="fa-solid fa-globe"></i>
+                        <span id="current-lang-code">EN</span>
+                        <i class="fa-solid fa-chevron-down caret"></i>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button class="lang-opt active" data-lang="en">
+                            <span class="flag">🇺🇸</span> English (EN)
+                        </button>
+                        <button class="lang-opt" data-lang="es">
+                            <span class="flag">🇭🇳</span> Español (ES)
+                        </button>
+                        <button class="lang-opt" data-lang="zh">
+                            <span class="flag">🇨🇳</span> 中文 (ZH)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Button -->
+                <button class="icon-btn" id="search-toggle-btn" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <!-- Waitlist Header CTA -->
+                <button onclick="Tally.openPopup('lbPeGN', { layout: 'modal', width: 500, hideTitle: true, overlay: true })" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.8rem;" data-i18n="btn_add_to_cart">
+                    Join Waitlist
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <div class="mobile-nav-content">
+            <button class="close-mobile-btn" id="close-mobile-btn">&times;</button>
+            <img src="assets/logo_transparent.png" alt="Hola Honey" class="mobile-logo">
+            <ul>
+                <li><a href="#shop" class="mobile-nav-link" data-i18n="nav_shop">Shop</a></li>
+                <li><a href="#story" class="mobile-nav-link" data-i18n="nav_story">Our Story</a></li>
+                <li><a href="#sourcing" class="mobile-nav-link" data-i18n="nav_sourcing">Sourcing</a></li>
+                <li><a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Search Overlay Container -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-container">
+            <button class="close-search-btn" id="close-search-btn">&times;</button>
+            <h3 data-i18n="search_title">Search Hola Honey</h3>
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+                <input type="text" id="search-input" placeholder="Search wildflower honey, gift sets, honeycomb..." data-i18n-placeholder="search_placeholder">
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION (Using User's Honduran Mountain Photo as Background) -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-image" style="background-image: url('assets/hero_bg.jpg');"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content container">
+            <div class="hero-text-block">
+                <h1 class="hero-title" data-i18n="hero_title">
+                    Raw honey<br>rooted in <span class="highlight-italics">Honduras.</span>
+                </h1>
+                
+                <h2 class="hero-subheadline" data-i18n="hero_subheadline">
+                    Premium, pure honey with purpose.
+                </h2>
+                
+                <p class="hero-description" data-i18n="hero_desc">
+                    Naturally delicious. Responsibly sourced from the mountains of Honduras, supporting local families and strengthening communities.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#shop" class="btn btn-primary" data-i18n="btn_shop_honey">
+                        SHOP HONEY <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#story" class="btn btn-outline-light" data-i18n="btn_our_story">
+                        OUR STORY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: OUR HONEY SELECTION (SHOP) -->
+    <section class="shop-section section-padding" id="shop">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-kicker" data-i18n="shop_kicker">HARVESTED WITH CARE</span>
+                <h2 class="section-title" data-i18n="shop_title">Our Raw Honey Collection</h2>
+                <div class="gold-divider"></div>
+                <p class="section-subtitle" data-i18n="shop_subtitle">
+                    Straight from the pristine mountain apiaries of La Virtud, Honduras. Unfiltered, unheated, and packed with natural enzymes.
+                </p>
+            </div>
+
+            <!-- Shop Grid -->
+            <div class="product-grid" id="product-grid">
+                <!-- Products dynamically rendered by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: OUR STORY & ETHICAL SOURCING -->
+    <section class="story-section section-padding" id="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image-col">
+                    <div class="story-image-frame">
+                        <img src="assets/beekeeper_story.jpg" alt="Local Honduran Beekeeper in La Virtud" class="story-img">
+                        <div class="story-badge-floating">
+                            <i class="fa-solid fa-compass"></i>
+                            <div>
+                                <strong data-i18n="origin_location">La Virtud, Lempira, Honduras.</strong>
+                                <span data-i18n="origin_country"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-text-col">
+                    <span class="section-kicker" data-i18n="story_kicker">ROOTED IN LA VIRTUD</span>
+                    <h2 class="section-title" data-i18n="story_title">Honey with a Higher Purpose</h2>
+                    <h3 class="story-subheading" data-i18n="story_subheading">Rooted in Central America. Powered by opportunity.</h3>
+                    <div class="gold-divider left"></div>
+                    
+                    <p class="story-lead" data-i18n="story_p1">
+                        Our story begins in the high-altitude mountain forests of La Virtud, Honduras, where local beekeepers care for bees surrounded by coffee blossoms, citrus trees, and pine canopy.
+                    </p>
+                    
+                    <p data-i18n="story_p2">
+                        <strong>Hola Honey</strong> was born out of a deep commitment to <em>People Over Profit</em>. We work directly with smallholder Honduran beekeeping families, providing fair wages, sustainable hive equipment, and re-investing profits into rural community education and bee habitat protection.
+                    </p>
+
+                    <div class="story-stats-grid">
+                        <a href="https://www.worldbank.org/ext/en/country/honduras" target="_blank" rel="noopener" class="stat-card stat-card-link">
+                            <span class="stat-number">47.6%</span>
+                            <span class="stat-label" data-i18n="stat_1">Nearly half of people in Honduras live on less than $8.30 a day.</span>
+                        </a>
+                        <a href="https://www.worldbank.org/ext/en/country/honduras" target="_blank" rel="noopener" class="stat-card stat-card-link">
+                            <span class="stat-number">7×</span>
+                            <span class="stat-label" data-i18n="stat_2">We pay seven times Honduras’s agricultural hourly minimum wage.</span>
+                        </a>
+                        <div class="stat-card">
+                            <span class="stat-number">38</span>
+                            <span class="stat-label" data-i18n="stat_3">Fruit trees planted in Honduras</span>
+                        </div>
+                    </div>
+                    <p class="story-source-footnote">
+                        <small><a href="https://www.worldbank.org/ext/en/country/honduras" target="_blank" rel="noopener">*Socioeconomic statistic sourced from the World Bank Honduras Overview.</a></small>
+                    </p>
+
+                    <a href="#sourcing" class="btn btn-secondary margin-top-sm" data-i18n="btn_learn_sourcing">
+                        LEARN ABOUT OUR SOURCING <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SOURCING & SUSTAINABILITY TIMELINE -->
+    <section class="sourcing-section section-padding" id="sourcing">
+        <div class="sourcing-bg-decor"></div>
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-kicker" data-i18n="sourcing_kicker">THE HONEY JOURNEY</span>
+                <h2 class="section-title" data-i18n="sourcing_title">From Hive to Jar</h2>
+                <div class="gold-divider"></div>
+            </div>
+
+            <div class="journey-timeline-wrapper">
+                <div class="journey-timeline">
+                    <!-- Step 01 -->
+                    <div class="journey-step">
+                        <div class="step-photo-wrap">
+                            <div class="step-badge-top">01</div>
+                            <div class="step-img-frame">
+                                <img src="assets/step1_foraging.jpg" alt="Mountain Foraging">
+                            </div>
+                            <div class="step-badge-bottom">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                        </div>
+                        <h3 class="journey-step-title" data-i18n="step1_title">Mountain Foraging</h3>
+                        <p class="journey-step-desc" data-i18n="step1_desc">Bees forage freely in pristine tropical mountain forests away from synthetic pesticides or industrial farms.</p>
+                    </div>
+
+                    <div class="timeline-connector">
+                        <div class="connector-line"></div>
+                        <div class="bee-icon-wrap">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C58F38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                                <path d="M6 8a4 4 0 0 0-4 4c0 3 3 5 4 5s2-2 2-5-1-4-2-4z"/>
+                                <path d="M18 8a4 4 0 0 1 4 4c0 3-3 5-4 5s-2-2-2-5 1-4 2-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Step 02 -->
+                    <div class="journey-step">
+                        <div class="step-photo-wrap">
+                            <div class="step-badge-top">02</div>
+                            <div class="step-img-frame">
+                                <img src="assets/step2_harvesting.jpg" alt="Ethical Harvesting">
+                            </div>
+                            <div class="step-badge-bottom">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C58F38" stroke-width="2">
+                                    <path d="M12 2l4.5 2.6v5.2L12 12.4 7.5 9.8V4.6L12 2zM12 12.4l4.5 2.6v5.2L12 22.8l-4.5-2.6v-5.2l4.5-2.6zM3 7.2l4.5 2.6v5.2L3 17.6l-4.5-2.6V9.8L3 7.2zM21 7.2l4.5 2.6v5.2L21 17.6l-4.5-2.6V9.8L21 7.2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="journey-step-title" data-i18n="step2_title">Ethical Harvesting</h3>
+                        <p class="journey-step-desc" data-i18n="step2_desc">Our beekeepers harvest with care, leaving sufficient honey stores to support the health of each colony.</p>
+                    </div>
+
+                    <div class="timeline-connector">
+                        <div class="connector-line"></div>
+                        <div class="bee-icon-wrap">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C58F38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                                <path d="M6 8a4 4 0 0 0-4 4c0 3 3 5 4 5s2-2 2-5-1-4-2-4z"/>
+                                <path d="M18 8a4 4 0 0 1 4 4c0 3-3 5-4 5s-2-2-2-5 1-4 2-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Step 03 -->
+                    <div class="journey-step">
+                        <div class="step-photo-wrap">
+                            <div class="step-badge-top">03</div>
+                            <div class="step-img-frame">
+                                <img src="assets/step3_extraction.jpg" alt="Cold Extraction">
+                            </div>
+                            <div class="step-badge-bottom">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+                        </div>
+                        <h3 class="journey-step-title" data-i18n="step3_title">Cold Extraction</h3>
+                        <p class="journey-step-desc" data-i18n="step3_desc">Honey is gently spun out of combs without heat processing, preserving all natural pollen, enzymes, and medicinal properties.</p>
+                    </div>
+
+                    <div class="timeline-connector">
+                        <div class="connector-line"></div>
+                        <div class="bee-icon-wrap">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C58F38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                                <path d="M6 8a4 4 0 0 0-4 4c0 3 3 5 4 5s2-2 2-5-1-4-2-4z"/>
+                                <path d="M18 8a4 4 0 0 1 4 4c0 3-3 5-4 5s-2-2-2-5 1-4 2-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Step 04 (Placeholder) -->
+                    <div class="journey-step">
+                        <div class="step-photo-wrap">
+                            <div class="step-badge-top">04</div>
+                            <div class="step-img-frame">
+                                <img src="assets/step4_jarring.jpg" alt="Artisanal Jarring">
+                            </div>
+                            <div class="step-badge-bottom">
+                                <i class="fa-solid fa-jar"></i>
+                            </div>
+                        </div>
+                        <h3 class="journey-step-title" data-i18n="step4_title">Artisanal Jarring</h3>
+                        <p class="journey-step-desc" data-i18n="step4_desc">Carefully bottled in glass jars and finished with attention to every detail.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: WAITLIST / JOIN THE COLONY -->
+    <section class="newsletter-section" id="contact">
+        <div class="container text-center">
+            <div class="waitlist-box">
+                <!-- Top Bee Emblem -->
+                <div class="waitlist-bee-icon">
+                    <i class="fa-solid fa-bug" style="display:none;"></i>
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C58F38" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                        <path d="M6 8a4 4 0 0 0-4 4c0 3 3 5 4 5s2-2 2-5-1-4-2-4z"/>
+                        <path d="M18 8a4 4 0 0 1 4 4c0 3-3 5-4 5s-2-2-2-5 1-4 2-4z"/>
+                        <line x1="9" y1="9" x2="15" y2="9"/>
+                        <line x1="9" y1="13" x2="15" y2="13"/>
+                        <line x1="9" y1="17" x2="15" y2="17"/>
+                    </svg>
+                </div>
+                
+                <span class="waitlist-kicker" data-i18n="newsletter_kicker">NO SPAM, JUST SWEET UPDATES</span>
+                <h2 class="waitlist-title" data-i18n="newsletter_title">Join the Hola Honey Waitlist</h2>
+                <div class="gold-divider center"></div>
+                
+                <p class="waitlist-desc" data-i18n="newsletter_desc">
+                    Be the first to know when our select Honduran honey harvests become available.<br>
+                    Join our waitlist for early access updates.
+                </p>
+                
+                <form class="waitlist-form" id="newsletter-form">
+                    <div class="form-inputs-row">
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-envelope input-icon"></i>
+                            <input type="email" id="newsletter-email" placeholder="Enter your email address" required data-i18n-placeholder="email_placeholder">
+                        </div>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-mobile-screen-button input-icon"></i>
+                            <input type="tel" id="newsletter-phone" placeholder="Enter your phone number" required data-i18n-placeholder="phone_placeholder">
+                        </div>
+                    </div>
+                    
+                    <button type="button" onclick="Tally.openPopup('lbPeGN', { layout: 'modal', width: 500, hideTitle: true, overlay: true })" class="btn btn-primary waitlist-submit-btn" data-i18n="btn_subscribe">
+                        JOIN WAITLIST <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <!-- Waitlist Perks Row -->
+                <div class="waitlist-perks-row">
+                    <div class="perk-item">
+                        <div class="perk-icon"><i class="fa-solid fa-lock"></i></div>
+                        <div class="perk-text">
+                            <strong>Early Access</strong>
+                            <span>Be the first to shop new harvests.</span>
+                        </div>
+                    </div>
+                    <div class="perk-divider"></div>
+                    <div class="perk-item">
+                        <div class="perk-icon"><i class="fa-solid fa-bell"></i></div>
+                        <div class="perk-text">
+                            <strong>Harvest Updates</strong>
+                            <span>Get notified about upcoming releases.</span>
+                        </div>
+                    </div>
+                    <div class="perk-divider"></div>
+                    <div class="perk-item">
+                        <div class="perk-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <div class="perk-text">
+                            <strong>Limited Harvest Releases</strong>
+                            <span>Access select harvest releases before they’re gone.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-feedback" id="form-feedback"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo_transparent.png" alt="Hola Honey Logo" class="footer-logo">
+                    <p data-i18n="footer_tagline">Raw honey rooted in Honduras. Premium, pure honey with purpose.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/holahoney3?stkn=MWVkOW85NWRub2Q2OQ==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1FD3SQkkLf/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@holahoney4?_r=1&_t=ZP-9A0GVIVi0w2" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer_quick_links">Quick Links</h4>
+                    <ul>
+                        <li><a href="#shop" data-i18n="nav_shop">Shop</a></li>
+                        <li><a href="#story" data-i18n="nav_story">Our Story</a></li>
+                        <li><a href="#sourcing" data-i18n="nav_sourcing">Sourcing</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer_products">Products</h4>
+                    <ul>
+                        <li><a href="#shop">Hola Honey — Mountain Harvest</a></li>
+                        <li><a href="#shop">Meliponini Reserve</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer_sourcing_title">Location</h4>
+                    <p class="footer-address">
+                        <i class="fa-solid fa-location-dot"></i> La Virtud, Lempira, Honduras.<br>
+                        <i class="fa-solid fa-envelope"></i> <a href="mailto:holahoney2830@gmail.com" style="color:inherit;">holahoney2830@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="year">2026</span> Hola Honey. <span data-i18n="footer_rights">All rights reserved. Rooted in Honduras.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OUT SHOPPING CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> <span data-i18n="cart_title">Your Shopping Cart</span></h3>
+            <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+        </div>
+
+        <div class="cart-free-shipping-bar" id="cart-free-shipping-bar">
+            <!-- Dynamic shipping calculation -->
+        </div>
+
+        <div class="cart-items-container" id="cart-items-container">
+            <!-- Dynamic cart items rendered by app.js -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-subtotal-row">
+                <span data-i18n="cart_subtotal">Subtotal</span>
+                <span class="subtotal-amount" id="cart-subtotal-amount">$0.00</span>
+            </div>
+            <p class="cart-shipping-note" data-i18n="cart_note">Taxes & shipping calculated at checkout.</p>
+            <button class="btn btn-primary checkout-btn" id="checkout-btn" data-i18n="btn_checkout">
+                PROCEED TO CHECKOUT <i class="fa-solid fa-lock"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- PRODUCT QUICK VIEW MODAL -->
+    <div class="modal-overlay" id="product-modal-overlay">
+        <div class="product-modal" id="product-modal">
+            <button class="close-modal-btn" id="close-modal-btn">&times;</button>
+            <div class="modal-content-grid" id="modal-content-grid">
+                <!-- Injected via app.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT SIMULATION MODAL -->
+    <div class="modal-overlay" id="checkout-modal-overlay">
+        <div class="checkout-modal">
+            <button class="close-modal-btn" id="close-checkout-modal-btn">&times;</button>
+            <div class="checkout-modal-content">
+                <div class="checkout-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h2 data-i18n="checkout_success_title">Order Received!</h2>
+                <p data-i18n="checkout_success_desc">Thank you for supporting smallholder beekeeping families in La Virtud, Honduras.</p>
+                <div class="order-summary-box" id="order-summary-box"></div>
+                <button class="btn btn-primary margin-top-md" id="finish-order-btn" data-i18n="btn_continue">CONTINUE SHOPPING</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tally Form Embed Script -->
+    <script src="https://tally.so/widgets/embed.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="app.js?v=17"></script>
+</body>
+</html>
