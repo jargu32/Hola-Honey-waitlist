@@ -735,7 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formFeedback = document.getElementById('form-feedback');
 
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', async (e) => {
+        newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const emailInput = document.getElementById('newsletter-email');
             const phoneInput = document.getElementById('newsletter-phone');
@@ -744,7 +744,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = phoneInput ? phoneInput.value.trim() : '';
 
             if (email && phone) {
-                // Show initial feedback
                 const msg = currentLang === 'es' 
                     ? '¡Gracias por unirte a la lista de espera de Hola Honey! Te avisaremos tan pronto como salga la cosecha.' 
                     : (currentLang === 'zh' 
@@ -753,17 +752,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 formFeedback.textContent = msg;
                 formFeedback.style.color = 'var(--forest-green)';
-
-                // Send to Vercel Serverless Backend (which routes securely to Tally / database)
-                try {
-                    await fetch('/api/waitlist', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email, phone })
-                    });
-                } catch (err) {
-                    console.log('Backend submission fallback:', err);
-                }
 
                 if (emailInput) emailInput.value = '';
                 if (phoneInput) phoneInput.value = '';
