@@ -735,26 +735,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const formFeedback = document.getElementById('form-feedback');
 
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
+        newsletterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
             const emailInput = document.getElementById('newsletter-email');
             const phoneInput = document.getElementById('newsletter-phone');
 
             const email = emailInput ? emailInput.value.trim() : '';
             const phone = phoneInput ? phoneInput.value.trim() : '';
 
-            if (email && phone) {
-                const msg = currentLang === 'es' 
-                    ? '¡Gracias por unirte a la lista de espera de Hola Honey! Te avisaremos tan pronto como salga la cosecha.' 
-                    : (currentLang === 'zh' 
-                        ? '感谢您加入 Hola Honey 候补名单！蜂采蜂蜜一到，我们即刻通知您。' 
-                        : 'Thank you for joining the Hola Honey Waitlist! We will notify you as soon as our harvest drops.');
+            if (!email) {
+                formFeedback.textContent = 'Please enter your email address.';
+                formFeedback.style.color = '#d9534f';
+                return;
+            }
+
+            try {
+                formFeedback.textContent = 'Joining waitlist...';
+                formFeedback.style.color = 'var(--text-primary)';
+
+                await window.saveWaitlistSignup(email, phone);
+
+                const msg = currentLang === 'es'
+                    ? '¡Gracias por unirte a la lista de espera de Hola Honey!'
+                    : (currentLang === 'zh'
+                        ? '感谢您加入 Hola Honey 候补名单！'
+                        : 'You’re on the Hola Honey waitlist!');
 
                 formFeedback.textContent = msg;
                 formFeedback.style.color = 'var(--forest-green)';
 
-                if (emailInput) emailInput.value = '';
+                emailInput.value = '';
                 if (phoneInput) phoneInput.value = '';
+
+            } catch (error) {
+                console.error('Firebase waitlist error:', error);
+                formFeedback.textContent = 'Something went wrong. Please try again.';
+                formFeedback.style.color = '#d9534f';
             }
         });
     }

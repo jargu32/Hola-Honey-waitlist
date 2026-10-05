@@ -496,7 +496,39 @@
         </div>
     </div>
 
+    <!-- Firebase SDK (Firestore Waitlist Integration) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp
+      } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCu95cQQUOyXV4leUUAPxqrluO9HOaI0A4",
+        authDomain: "hola-honey.firebaseapp.com",
+        projectId: "hola-honey",
+        storageBucket: "hola-honey.firebasestorage.app",
+        messagingSenderId: "1072864444084",
+        appId: "1:1072864444084:web:778ab8b03b865ac6bd61e1",
+        measurementId: "G-D7K509SV8B"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      window.saveWaitlistSignup = async function(email, phone) {
+        return await addDoc(collection(db, "waitlist"), {
+          email: email,
+          phone: phone || "",
+          createdAt: serverTimestamp()
+        });
+      };
+    </script>
+
     <!-- JavaScript -->
-    <script src="app.js?v=18"></script>
+    <script src="app.js?v=19"></script>
 </body>
 </html>
