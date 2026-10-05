@@ -1736,3 +1736,17 @@ button {
     font-weight: 600;
     color: var(--text-primary);
 }
+
+/* Tally Waitlist Embed Container */
+.tally-waitlist-embed {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.tally-waitlist-embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+}
