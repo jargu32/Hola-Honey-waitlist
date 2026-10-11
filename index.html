@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="stylesheet" href="style.css?v=20">
 </head>
 <body class="lang-en">
 
@@ -59,13 +59,13 @@
                     </div>
                 </div>
 
-                <!-- Search Button -->
-                <button class="icon-btn" id="search-toggle-btn" aria-label="Search">
+                <!-- Search Button (Desktop) -->
+                <button class="icon-btn header-search-btn" id="search-toggle-btn" aria-label="Search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
                 <!-- Waitlist Header CTA -->
-                <button onclick="scrollToWaitlist()" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.8rem;" data-i18n="btn_add_to_cart">
+                <button onclick="scrollToWaitlist()" class="btn btn-primary header-waitlist-cta" data-i18n="btn_add_to_cart">
                     Join Waitlist
                 </button>
 
@@ -82,6 +82,11 @@
         <div class="mobile-nav-content">
             <button class="close-mobile-btn" id="close-mobile-btn">&times;</button>
             <img src="assets/logo_transparent.png" alt="Hola Honey" class="mobile-logo">
+            <!-- Search Button inside Hamburger Menu -->
+            <button class="mobile-menu-search-btn" id="mobile-menu-search-toggle" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span data-i18n="search_title">Search Hola Honey</span>
+            </button>
             <ul>
                 <li><a href="#shop" class="mobile-nav-link" data-i18n="nav_shop">Shop</a></li>
                 <li><a href="#story" class="mobile-nav-link" data-i18n="nav_story">Our Story</a></li>
@@ -529,6 +534,6 @@
     </script>
 
     <!-- JavaScript -->
-    <script src="app.js?v=19"></script>
+    <script src="app.js?v=20"></script>
 </body>
 </html>

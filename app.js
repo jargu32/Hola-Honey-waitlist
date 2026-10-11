@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             newsletter_kicker: "NO SPAM, JUST SWEET UPDATES",
             newsletter_title: "Join the Hola Honey Waitlist",
             newsletter_desc: "Be the first to know when our select Honduran honey harvests become available. Join our waitlist for early access updates.",
-            email_placeholder: "Enter your email address to join the waitlist...",
-            phone_placeholder: "Enter your phone number...",
+            email_placeholder: "Enter your email address",
+            phone_placeholder: "Enter your phone number",
             btn_subscribe: 'JOIN WAITLIST <i class="fa-solid fa-paper-plane"></i>',
             
             footer_tagline: "Raw honey rooted in Honduras. Premium, pure honey with purpose.",
@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
             newsletter_kicker: "SIN SPAM, SOLO DULCES NOVEDADES",
             newsletter_title: "Únete a la Lista de Espera de Hola Honey",
             newsletter_desc: "Sé el primero en enterarte cuando salgan nuestras cosechas de miel de Honduras. Únete a nuestra lista de espera para recibir actualizaciones exclusivas.",
-            email_placeholder: "Ingresa tu correo para unirte a la lista de espera...",
-            phone_placeholder: "Ingresa tu teléfono...",
+            email_placeholder: "Ingresa tu correo electrónico",
+            phone_placeholder: "Ingresa tu teléfono",
             btn_subscribe: 'UNIRSE A LA LISTA <i class="fa-solid fa-paper-plane"></i>',
             
             footer_tagline: "Miel pura arraigada en Honduras. Miel premium con propósito.",
@@ -678,9 +678,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchOverlay = document.getElementById('search-overlay');
     const closeSearchBtn = document.getElementById('close-search-btn');
     const searchInput = document.getElementById('search-input');
-    const searchResults = document.getElementById('search-results');
+    const mobileMenuSearchToggle = document.getElementById('mobile-menu-search-toggle');
 
     if (searchToggleBtn) searchToggleBtn.addEventListener('click', () => searchOverlay.classList.add('active'));
+    if (mobileMenuSearchToggle) {
+        mobileMenuSearchToggle.addEventListener('click', () => {
+            if (mobileNavOverlay) mobileNavOverlay.classList.remove('active');
+            if (searchOverlay) searchOverlay.classList.add('active');
+            if (searchInput) searchInput.focus();
+        });
+    }
     if (closeSearchBtn) closeSearchBtn.addEventListener('click', () => searchOverlay.classList.remove('active'));
 
     if (searchInput) {

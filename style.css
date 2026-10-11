@@ -376,6 +376,12 @@ button {
     justify-content: center;
 }
 
+.header-waitlist-cta {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
 .mobile-menu-btn {
     display: none;
     font-size: 1.4rem;
@@ -1635,57 +1641,9 @@ button {
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS
+   MOBILE NAV OVERLAY & MENU SEARCH
    ========================================================================== */
 
-@media (max-width: 992px) {
-    .main-nav { display: none; }
-    .mobile-menu-btn { display: block; }
-    .hero-title { font-size: 2.5rem; }
-    .story-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    
-    .journey-timeline {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
-
-    .journey-step {
-        max-width: 300px;
-    }
-
-    .timeline-connector {
-        flex: 0 0 40px;
-        margin-top: 0;
-        width: 2px;
-        height: 40px;
-    }
-
-    .connector-line {
-        width: 0;
-        height: 100%;
-        border-top: none;
-        border-left: 2px dashed #C58F38;
-    }
-
-    .bee-icon-wrap {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 4px 0;
-    }
-}
-
-@media (max-width: 640px) {
-    .hero-title { font-size: 2.1rem; }
-    .hero-text-card { padding: 28px; }
-    .newsletter-form { flex-direction: column; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .food-selector { justify-content: center; }
-}
-
-/* Mobile Nav Overlay */
 .mobile-nav-overlay {
     position: fixed;
     top: 0;
@@ -1694,6 +1652,7 @@ button {
     height: 100%;
     background: rgba(45, 37, 30, 0.7);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 1500;
     opacity: 0;
     visibility: hidden;
@@ -1707,28 +1666,67 @@ button {
 
 .mobile-nav-content {
     width: 300px;
+    max-width: 85vw;
     height: 100%;
     background: var(--bg-modal);
-    padding: 40px 28px;
+    padding: 36px 24px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .close-mobile-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 18px;
+    right: 18px;
     font-size: 2rem;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
 }
 
 .mobile-logo {
-    height: 40px;
-    margin-bottom: 32px;
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 24px;
+    align-self: flex-start;
+}
+
+.mobile-menu-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg-cream-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.mobile-menu-search-btn i {
+    color: var(--honey-amber);
+    font-size: 1.05rem;
+}
+
+.mobile-menu-search-btn:hover {
+    border-color: var(--honey-amber);
+    color: var(--text-primary);
 }
 
 .mobile-nav-content ul {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .mobile-nav-content a {
@@ -1737,16 +1735,665 @@ button {
     color: var(--text-primary);
 }
 
-/* Tally Waitlist Embed Container */
-.tally-waitlist-embed {
-  width: 100%;
-  max-width: 780px;
-  margin: 0 auto;
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (DESKTOP PRESERVED)
+   ========================================================================== */
+
+/* Tablet & Intermediate Viewports */
+@media (max-width: 992px) {
+    .main-nav { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .story-grid { grid-template-columns: 1fr; }
 }
 
-.tally-waitlist-embed iframe {
-  display: block;
-  width: 100%;
-  border: 0;
-  background: transparent;
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    /* 1. Mobile Navigation Header */
+    .site-header {
+        height: 70px;
+    }
+
+    .header-container {
+        padding: 0 12px;
+        gap: 8px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .brand-logo {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        min-width: 0;
+    }
+
+    .brand-logo img {
+        height: 48px;
+        max-height: 48px;
+        width: auto;
+        max-width: 135px;
+        object-fit: contain;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+
+    /* Remove search from main mobile header */
+    #search-toggle-btn {
+        display: none !important;
+    }
+
+    /* Compact Language Switcher */
+    .lang-switcher {
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .lang-btn {
+        padding: 6px 8px;
+        font-size: 0.72rem;
+        gap: 4px;
+        border-radius: 14px;
+        min-height: 32px;
+        white-space: nowrap;
+    }
+
+    .lang-btn i.fa-globe {
+        font-size: 0.78rem;
+    }
+
+    .lang-btn #current-lang-code {
+        font-size: 0.72rem;
+        font-weight: 600;
+    }
+
+    .lang-btn .caret {
+        font-size: 0.55rem;
+    }
+
+    .lang-dropdown {
+        width: 140px;
+        padding: 4px;
+        top: calc(100% + 6px);
+        right: 0;
+    }
+
+    .lang-opt {
+        padding: 8px 10px;
+        font-size: 0.78rem;
+        gap: 6px;
+    }
+
+    /* Compact Join Waitlist Button */
+    .header-waitlist-cta {
+        padding: 6px 11px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        border-radius: 6px;
+        white-space: nowrap;
+        line-height: 1.2;
+        flex-shrink: 0;
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--honey-amber);
+        color: #FFFFFF;
+        letter-spacing: 0.3px;
+    }
+
+    /* Slightly smaller Hamburger Icon with easy tap area */
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        padding: 0;
+        font-size: 1.15rem;
+        color: var(--text-primary);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    /* 2. Homepage Hero Section */
+    .hero-section {
+        min-height: auto;
+        padding: 44px 0 52px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-section .container {
+        padding: 0 16px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 0;
+        width: 100%;
+    }
+
+    .hero-text-block {
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+    }
+
+    .hero-subheadline {
+        font-size: 1.15rem;
+        line-height: 1.3;
+        margin-bottom: 12px;
+    }
+
+    .hero-description {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin-bottom: 22px;
+        max-width: 100%;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        flex: 1 1 135px;
+        text-align: center;
+        justify-content: center;
+        padding: 12px 14px;
+        font-size: 0.82rem;
+        white-space: nowrap;
+    }
+
+    /* 3. Product Collection */
+    .section-padding {
+        padding: 48px 0;
+    }
+
+    .section-header {
+        margin-bottom: 24px;
+        padding: 0 12px;
+    }
+
+    .section-kicker {
+        font-size: 0.74rem;
+        letter-spacing: 2px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .gold-divider {
+        margin: 12px auto 14px auto;
+    }
+
+    .section-subtitle {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        padding: 0 4px;
+    }
+
+    .product-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        margin-top: 24px;
+        width: 100%;
+        padding: 0 12px;
+    }
+
+    .product-card {
+        flex: 1 1 100%;
+        max-width: 440px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .product-image-wrap {
+        height: 250px;
+    }
+
+    .product-tag {
+        top: 10px;
+        left: 10px;
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+    .product-status-badge {
+        top: 10px;
+        right: 10px;
+        font-size: 0.68rem;
+        padding: 3px 8px;
+    }
+
+    .product-info {
+        padding: 20px 18px;
+    }
+
+    .product-origin {
+        font-size: 0.74rem;
+        margin-bottom: 4px;
+    }
+
+    .product-name {
+        font-size: 1.22rem;
+        line-height: 1.3;
+        margin-bottom: 8px;
+    }
+
+    .product-desc {
+        font-size: 0.88rem;
+        line-height: 1.45;
+        margin-bottom: 16px;
+    }
+
+    .product-footer .add-cart-btn {
+        width: 100%;
+        padding: 12px 18px;
+        font-size: 0.85rem;
+        justify-content: center;
+    }
+
+    /* 4. Our Story Section */
+    .story-section {
+        padding: 48px 0;
+    }
+
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 0 12px;
+    }
+
+    .story-img {
+        height: 290px;
+    }
+
+    .story-badge-floating {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        padding: 10px 14px;
+        gap: 10px;
+    }
+
+    .story-badge-floating i {
+        font-size: 1.4rem;
+    }
+
+    .story-badge-floating strong {
+        font-size: 0.85rem;
+    }
+
+    .story-text-col .gold-divider.left {
+        margin: 12px 0 16px 0;
+    }
+
+    .story-subheading {
+        font-size: 1.15rem;
+        margin-top: 4px;
+        margin-bottom: 10px;
+    }
+
+    .story-lead {
+        font-size: 1.05rem;
+        line-height: 1.5;
+        margin-bottom: 14px;
+    }
+
+    .story-text-col p {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        margin-bottom: 14px;
+    }
+
+    /* Vertical Story Statistics */
+    .story-stats-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 24px 0 14px 0;
+        width: 100%;
+    }
+
+    .stat-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 18px 20px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .stat-number {
+        font-size: 2.1rem;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        font-size: 0.88rem;
+        line-height: 1.4;
+        display: block;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .story-source-footnote {
+        font-size: 0.75rem;
+        margin-top: 10px;
+    }
+
+    .story-text-col .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 13px 20px;
+        margin-top: 16px;
+    }
+
+    /* 5. From Hive to Jar (Timeline) */
+    .sourcing-section {
+        padding: 48px 0;
+    }
+
+    .journey-timeline-wrapper {
+        margin-top: 32px;
+        padding: 0 12px;
+    }
+
+    .journey-timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .journey-step {
+        width: 100%;
+        max-width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .step-photo-wrap {
+        width: 160px;
+        height: 180px;
+        margin: 0 auto 16px auto;
+    }
+
+    .timeline-connector {
+        flex: 0 0 36px;
+        height: 36px;
+        margin: 8px auto;
+        width: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .connector-line {
+        width: 0;
+        height: 100%;
+        border-top: none;
+        border-left: 2px dashed #C58F38;
+        opacity: 0.6;
+    }
+
+    .bee-icon-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bg-warm-ivory);
+        padding: 3px 0;
+    }
+
+    .journey-step-title {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .journey-step-desc {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        text-align: center;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    /* 6. Join Waitlist Section */
+    .newsletter-section {
+        padding: 56px 0;
+    }
+
+    .waitlist-box {
+        padding: 0 16px;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .waitlist-kicker {
+        font-size: 0.74rem;
+        letter-spacing: 2px;
+    }
+
+    .waitlist-title {
+        font-size: 2.15rem;
+        line-height: 1.18;
+        margin-bottom: 12px;
+    }
+
+    .waitlist-desc {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin-bottom: 22px;
+    }
+
+    .waitlist-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .form-inputs-row {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .input-with-icon {
+        width: 100%;
+    }
+
+    .input-with-icon input {
+        width: 100%;
+        padding: 15px 16px;
+        font-size: 0.92rem;
+        text-align: center;
+    }
+
+    .input-with-icon input::placeholder {
+        font-size: 0.88rem;
+    }
+
+    .waitlist-submit-btn {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 0.88rem;
+        letter-spacing: 1.5px;
+    }
+
+    .waitlist-perks-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        width: 100%;
+    }
+
+    .perk-item {
+        width: 100%;
+        max-width: 300px;
+        justify-content: flex-start;
+    }
+
+    .perk-divider {
+        display: none;
+    }
+
+    /* Footer Responsive */
+    .site-footer {
+        padding: 48px 0 24px 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 0 12px;
+    }
+
+    /* Product Quick View Modal Responsive */
+    .product-modal {
+        padding: 24px 18px;
+        width: 92%;
+        max-height: 85vh;
+    }
+
+    #modal-content-grid > div {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+    }
+
+    /* Search Overlay Responsive */
+    .search-overlay {
+        padding: 60px 16px 24px 16px;
+    }
+
+    .search-input-wrapper input {
+        padding: 14px 20px 14px 44px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Extra Small Screens (<= 380px) */
+@media (max-width: 380px) {
+    .header-container {
+        padding: 0 8px;
+        gap: 4px;
+    }
+
+    .brand-logo img {
+        height: 34px;
+        max-width: 100px;
+    }
+
+    .header-actions {
+        gap: 4px;
+    }
+
+    .lang-btn {
+        padding: 4px 6px;
+        font-size: 0.65rem;
+    }
+
+    .header-waitlist-cta {
+        padding: 4px 7px;
+        font-size: 0.65rem;
+    }
+
+    .mobile-menu-btn {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        font-size: 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.95rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .product-tag {
+        top: 8px;
+        left: 8px;
+        font-size: 0.64rem;
+        padding: 2px 6px;
+    }
+
+    .product-status-badge {
+        top: 8px;
+        right: 8px;
+        font-size: 0.62rem;
+        padding: 2px 6px;
+        gap: 3px;
+    }
+
+    .waitlist-title {
+        font-size: 1.9rem;
+    }
+
+    .input-with-icon input {
+        font-size: 0.88rem;
+        padding: 14px 12px;
+    }
+
+    .input-with-icon input::placeholder {
+        font-size: 0.82rem;
+    }
+
+    .step-photo-wrap {
+        width: 140px;
+        height: 160px;
+    }
 }
